@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
-mongoose.connect('localhost:27017/ecommerce');
+mongoose.connect('localhost:27017/ecommerce', { useNewUrlParser: true });
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
