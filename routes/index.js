@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Item = require('../models/item');
+var passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -25,11 +26,11 @@ router.get('/login', function(req, res, next){
 
 });
 
-router.post('/login', function(req, res, next){
+// router.post('/login', function(req, res, next){
 
-  res.redirect('/');
+//   res.redirect('/');
 
-});
+// });
 
 router.get('/register', function(req, res, next){
 
@@ -37,9 +38,14 @@ router.get('/register', function(req, res, next){
 
 });
 
-router.post('/register', function(req, res, next){
-  
-  
+router.post('/login', passport.authenticate('local.register', {
+  successRedirect: '/account',
+  failureRedirect: '/register' 
+}) );
+
+router.get('/account', function(req, res, next){
+
+  res.render('../views/customer/account');
 
 });
 
