@@ -24,17 +24,17 @@ head
     .wrap-login100
       .login100-pic.js-tilt(data-tilt='')
         img(src='images/img-01.png' alt='IMG')
-      form.login100-form.validate-form
+      form.login100-form.validate-form(action='/login' method='post')
         
         span.login100-form-title
           | Customer Login
         .wrap-input100.validate-input(data-validate='Valid email is required: ex@abc.xyz')
-          input.input100(type='text' name='email' placeholder='Email')
+          input.input100(type='text' name='email' placeholder='Email' class='form-control')
           span.focus-input100
           span.symbol-input100
             i.fa.fa-envelope(aria-hidden='true')
         .wrap-input100.validate-input(data-validate='Password is required')
-          input.input100(type='password' name='pass' placeholder='Password')
+          input.input100(type='password' name='pass' placeholder='Password' class='form-control')
           span.focus-input100
           span.symbol-input100
             i.fa.fa-lock(aria-hidden='true')

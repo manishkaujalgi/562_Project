@@ -6,6 +6,9 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expressPug = require('express-pug');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var session = require('express-session');
+var connflash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
@@ -24,6 +27,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({resave: false, saveUninitialized: false}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);

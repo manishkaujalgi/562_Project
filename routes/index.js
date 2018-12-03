@@ -19,15 +19,27 @@ router.get('/', function(req, res, next) {
   
 });
 
-router.get('/login', function(req, res){
+router.get('/login', function(req, res, next){
 
   res.render('../views/customer/login');
 
 });
 
-router.get('/register', function(req, res){
+router.post('/login', function(req, res, next){
+
+  res.redirect('/');
+
+});
+
+router.get('/register', function(req, res, next){
 
   res.render('../views/customer/register');
+
+});
+
+router.post('/register', function(req, res, next){
+  
+  
 
 });
 
