@@ -21,11 +21,16 @@ nav.navbar.navbar-inverse.bg-dark
             |  My Profile 
             span.caret
           ul.dropdown-menu
-            li
-              a(href='#') My Account
-            
-            li.divider(role='separator')
-            li
-              a(href='#') Sign out..!
+            if login
+              li
+                a(href='#') My Account
+              
+              li.divider(role='separator')
+              li
+                a(href='/logout') Logout..!
+
+            else
+              li
+                a(href='/login') Login
     // /.navbar-collapse
   // /.container-fluid
