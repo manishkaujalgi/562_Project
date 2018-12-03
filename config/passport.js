@@ -19,7 +19,7 @@ passport.use('local.register', new BasicStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, function(req, email, password, result){
-    Customer.findOne({'email': email}, function(err, user){
+    Customer.findOne({'user_email': email}, function(err, user){
 
         if(user)
             return result(null, false, {message: 'Email is already registered. Please Login'});

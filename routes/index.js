@@ -26,21 +26,22 @@ router.get('/login', function(req, res, next){
 
 });
 
-// router.post('/login', function(req, res, next){
+router.post('/login', function(req, res, next){
 
-//   res.redirect('/');
-
-// });
-
-router.get('/register', function(req, res, next){
-
-  res.render('../views/customer/register');
+  res.redirect('/');
 
 });
 
-router.post('/login', passport.authenticate('local.register', {
+router.get('/register', function(req, res, next){
+  var alerts = req.flash('error');
+  res.render('../views/customer/register', {displayErr: alerts, validateErr: alerts.length>0});
+
+});
+
+router.post('/register', passport.authenticate('local.register', {
   successRedirect: '/account',
-  failureRedirect: '/register' 
+  failureRedirect: '/register',
+  failureFlash: true 
 }) );
 
 router.get('/account', function(req, res, next){

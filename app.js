@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'idk', resave: false, saveUninitialized: false}));
-//app.use(flash());
+app.use(connflash());
 app.use(passport.initialize());
 app.use(passport.session());
 

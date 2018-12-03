@@ -1,6 +1,6 @@
 doctype html
 head
-  title Login V1
+  title Login
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1')
   // ===============================================================================================
@@ -29,12 +29,12 @@ head
         span.login100-form-title
           | Customer Login
         .wrap-input100.validate-input(data-validate='Valid email is required: ex@abc.xyz')
-          input.input100(type='text' name='email' placeholder='Email' class='form-control')
+          input.input100(type='text' id='email' name='email' placeholder='Email' class='form-control')
           span.focus-input100
           span.symbol-input100
             i.fa.fa-envelope(aria-hidden='true')
         .wrap-input100.validate-input(data-validate='Password is required')
-          input.input100(type='password' name='pass' placeholder='Password' class='form-control')
+          input.input100(type='password' id='password' name='password' placeholder='Password' class='form-control')
           span.focus-input100
           span.symbol-input100
             i.fa.fa-lock(aria-hidden='true')
