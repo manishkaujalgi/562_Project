@@ -19,6 +19,10 @@ passport.use('local.register', new BasicStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, function(req, email, password, result){
+    req.checkBody('email', 'Enter a valid Email id').isEmail();
+    if (req.validationErrors()){
+        return result(null, false, {message: 'Please enter a valid Email id'});
+    }
     Customer.findOne({'user_email': email}, function(err, user){
 
         if(user)
@@ -41,3 +45,40 @@ passport.use('local.register', new BasicStrategy({
     });
 
 }));
+
+passport.use('local.login', new BasicStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, function(req, email, password, result){
+    req.checkBody('email', 'Enter a valid Email id').isEmail();
+    if (req.validationErrors()){
+        return result(null, false, {message: 'Please enter a valid Email id'});
+    }
+    Customer.findOne({'user_email': email}, function(err, user){
+        if(err)
+            return result(err);
+
+        if(!user)
+            return result(null, false, {message: 'Email is not registered. Please register'});
+        
+        if(user){
+            
+            Customer.findOne({'user_password': password}, function(err, pass){
+
+                if(err)
+                    return result(err);
+
+                if(!pass)
+                    return result(null, false, {message: 'Incorrect Password | Try again'});
+                               
+                return result(null, user);    
+            
+        
+            });
+        }
+
+    });
+
+}
+));

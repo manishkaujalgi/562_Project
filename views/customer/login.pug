@@ -28,6 +28,10 @@ head
         
         span.login100-form-title
           | Customer Login
+        if validateErr
+            each err in displayErr
+                .alert.alert-danger
+                    h5= err
         .wrap-input100.validate-input(data-validate='Valid email is required: ex@abc.xyz')
           input.input100(type='text' id='email' name='email' placeholder='Email' class='form-control')
           span.focus-input100
@@ -43,9 +47,9 @@ head
             | Login
         .text-center.p-t-12
           span.txt1
-            | Forgot
+            | Forgot 
           a.txt2(href='#')
-            | Username / Password?
+            |  Username / Password?
         .text-center.p-t-136
           a.txt2(href='../register')
             h2 Just Born --> Register here!!

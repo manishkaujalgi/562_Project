@@ -6,9 +6,11 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expressPug = require('express-pug');
 var mongoose = require('mongoose');
+var validator = require('express-validator');
 var passport = require('passport');
 var session = require('express-session');
 var connflash = require('connect-flash');
+
 
 var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
@@ -26,6 +28,7 @@ app.set('view engine', '.pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(validator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'idk', resave: false, saveUninitialized: false}));
