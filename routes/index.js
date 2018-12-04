@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Item = require('../models/item');
 var passport = require('passport');
+var Basket = require('../models/basket');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,10 +15,28 @@ router.get('/', function(req, res, next) {
 
     }
 
-    res.render('index', { title: 'Express', items: groupOfItems });
+    res.render('index', { title: 'Buy Online', items: groupOfItems });
 
   });
   
+});
+
+router.get('/addtocart/:id', function(req, res){
+
+  var itemId = req.params.id;
+  var basket = new Basket(req.session.basket ? req.session.basket : {});
+
+  Item.findById(itemId, function(err, item){
+    if(err)
+      return res.redirect('/');
+
+    basket.add(item, item.id);
+    req.session.basket = basket;
+    console.log(req.session.basket);
+    res.redirect('http://localhost:3000/');
+
+  });
+
 });
 
 router.get('/account', isLoggedIn, function(req, res, next){
@@ -50,6 +69,12 @@ router.post('/register', passport.authenticate('local.register', {
   failureFlash: true 
 }) );
 
+router.get('/logout', isLoggedIn, function(req, res, next){
+  req.logout();
+  res.render('../views/customer/login');
+
+});
+
 router.get('/account', isLoggedIn, function(req, res, next){
 
   res.render('../views/customer/account');
@@ -58,15 +83,11 @@ router.get('/account', isLoggedIn, function(req, res, next){
 
 router.use('/', notLoggedIn, function(req, res, next){
 
-  res.render('/');
+  res.redirect('/');
 
 });
 
-router.get('/logout', isLoggedIn, function(req, res, next){
-  req.logout();
-  res.render('../views/customer/login');
 
-});
 
 module.exports = router;
 
