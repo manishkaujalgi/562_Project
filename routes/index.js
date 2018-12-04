@@ -39,6 +39,15 @@ router.get('/addtocart/:id', function(req, res){
 
 });
 
+router.get('/showcart', function(req, res){
+    if(!req.session.basket){
+      return res.render('../views/showCart', {items: null});
+    }
+    var basket = new Basket(req.session.basket);
+    res.render('../views/showCart', {items: basket.generateArray(), finalPrice: basket.finalPrice });
+
+});
+
 router.get('/account', isLoggedIn, function(req, res, next){
 
   res.render('../views/customer/account');
