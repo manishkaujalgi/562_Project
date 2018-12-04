@@ -15,6 +15,8 @@ nav.navbar.navbar-inverse.bg-dark
           a(href='#') 
             i.fas.fa-cart-arrow-down
             |  Checkout Cart
+            span.badge.badge-primary
+              #{session.basket.finalQty}
         li.dropdown
           a.dropdown-toggle(href='#' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false')
             i.fas.fa-user   

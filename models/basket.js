@@ -1,21 +1,26 @@
 module.exports = function Basket(prevBasket) {
 
-    this.items = prevBasket.items;
-    this.finalQty = prevBasket.finalQty;
-    this.finalPrice = prevBasket.finalPrice;
+    this.items = prevBasket.items || {};
+    this.finalQty = prevBasket.finalQty || 0;
+    this.finalPrice = prevBasket.finalPrice || 0;
 
-    
+    var a=0;
+    var b=0;
 
     this.add = function (item, id) {
         var addedItem = this.items[id];
+        //console.log(this.items[id]);
         if (!addedItem) {
-            addedItem = {item: item, qty: 0, price: 0};
-            this.items[id] = {item: item, qty: 0, price: 0};
+            addedItem = this.items[id] = {item: item, qty: 0, item_price: 0};
+             
         }
         addedItem.qty++;
-        addedItem.price = addedItem.item.price * addedItem.qty;
+        addedItem.price = addedItem.item.item_price * addedItem.qty;
         this.finalQty++;
-        this.finalPrice = this.finalPrice + addedItem.price;
+        // a = parseFloat(this.finalPrice);
+        // b = parseFloat(addedItem.price);
+        // console.log(typeof(this.finalQty));
+        this.finalPrice += addedItem.item.item_price;
     };
 
     this.generateArray = function () {
