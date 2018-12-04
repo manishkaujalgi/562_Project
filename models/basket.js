@@ -24,6 +24,12 @@ module.exports = function Basket(prevBasket) {
         this.finalPrice += addedItem.item.item_price;
     };
 
+    this.remove = function(id){
+        this.finalQty -= this.items[id].qty;
+        this.finalPrice -= this.items[id].price;
+        delete this.items[id];
+    };
+
     this.generateArray = function () {
         var arr = [];
         for (var id in this.items) {

@@ -10,17 +10,13 @@ block content
                     each val in items
                         li.list-group-item
                             span.badge.badge-primary #{val.qty}
-                            strong #{val.item.item_title}
-                            span.label.label-success $#{val.price}
-                            div.btn-group
-                                button(class='btn btn-primary btn-xs dropdown-toggle' type='button')
-                                |   Action
-                                span.caret
-                                ul.dropdown-menu
-                                    li
-                                        a(href='') Reduce by 1
-                                    li
-                                        a(href='') Remove all
+                            strong #{val.item.item_title} &nbsp&nbsp&nbsp
+                            span.label.label-success $#{val.price} 
+                            |   &nbsp&nbsp&nbsp
+                            a(href='/remove/' + val.item._id)
+                                div.btn-group
+                                    button(class='btn btn-warning' type='button') remove
+                                
 
         .row
             .col-sm-6.col-md-6.col-md-offset-0
@@ -29,7 +25,8 @@ block content
 
         .row
             .col-sm-6.col-md-6.col-md-offset-0
-                button.btn.btn-success(type='button') Continue Shopping
+                a(href='../')
+                    button.btn.btn-success(type='button') Continue Shopping
             
 
                 button.btn.btn-primary.pull-right(type='button') Checkout

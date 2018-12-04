@@ -39,6 +39,16 @@ router.get('/addtocart/:id', function(req, res){
 
 });
 
+router.get('/remove/:id', function(req, res){
+
+  var itemId = req.params.id;
+  var basket = new Basket(req.session.basket ? req.session.basket : {});
+
+  basket.remove(itemId);
+  req.session.basket = basket;
+  res.redirect('/showcart');
+});
+
 router.get('/showcart', function(req, res){
     if(!req.session.basket){
       return res.render('../views/showCart', {items: null});
