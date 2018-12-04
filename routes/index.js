@@ -44,6 +44,7 @@ router.get('/showcart', function(req, res){
       return res.render('../views/showCart', {items: null});
     }
     var basket = new Basket(req.session.basket);
+    console.log(Object.values(basket.generateArray()));
     res.render('../views/showCart', {items: basket.generateArray(), finalPrice: basket.finalPrice });
 
 });

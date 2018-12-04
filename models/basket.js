@@ -14,6 +14,7 @@ module.exports = function Basket(prevBasket) {
             addedItem = this.items[id] = {item: item, qty: 0, item_price: 0};
              
         }
+        //console.log(Object.values(addedItem.items.item));
         addedItem.qty++;
         addedItem.price = addedItem.item.item_price * addedItem.qty;
         this.finalQty++;
