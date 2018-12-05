@@ -1,0 +1,24 @@
+extends layout.pug
+
+
+block content
+    script.
+        $('#submit-btn').click(function(){
+        $('details-form-class').submit();
+        });
+    h1.mt-5= title
+    form(action='/admin/items/addItem' method='post' class='details-form-class')
+        .form-group
+            label(for='imageRoute') imageUrl
+            input#name.form-control(type='text', placeholder='Enter Item imageURL', name="imageRoute", value=item.imageRoute)
+        .form-group
+            label(for='item_title') Item title
+            input#name.form-control(type='text', placeholder='Enter Item name', name="item_title", value=item.item_title)
+        .form-group
+            label(for='item_detail') Item details
+            input#author.form-control(type='text', placeholder='Enter Item details', name="item_detail", value=item.item_detail)
+        .form-group
+            label(for='item_price') Price
+            input#numPages.form-control(type='text', placeholder='Enter Item Price', name="item_price", value=item.item_price)
+        button.btn.btn-success(id='submit-btn' type='submit') Submit
+        

@@ -14,11 +14,12 @@ var MongoStore = require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
 //var userRoutes = require('./routes/user');
-//var usersRouter = require('./routes/users');
+var adminRouter = require('./routes/admin');
 
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/ecommerce', { useNewUrlParser: true });
+
 require('./config/passport');
 
 // view engine setup
@@ -44,7 +45,7 @@ app.use(function(req, res, next){
   next();
 })
 
-//app.use('/user', userRoutes);
+app.use('/admin', adminRouter);
 app.use('/', indexRouter);
 
 
@@ -64,4 +65,24 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() { 
+
+// app.get('/', (req,resp) => {
+    
+//   Book.getBooks(function(err, bookStorage){
+//       if(err){
+//           throw err;
+//       }
+//       //resp.status(200);
+//       resp.render('index', { books: bookStorage})
+//       //resp.json(bookStorage);
+//       console.log(200);
+        
+//   });
+    
+// } );
+
+
+// });
 module.exports = app;

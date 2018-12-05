@@ -1,0 +1,24 @@
+extends layout.pug
+
+block content
+
+    h1.mt-5= "Item name : '" + item.item_title + "'"
+    h3.mt-5= "Item Image link : " + item.imageRoute
+    h3.mt-2= "Item price : $" + item.item_price
+    a.btn.btn-info(href='/admin/items/' + item.id + '/update' style='margin-top: 30px') Edit
+    //- script.
+        $('#submit-btn').click(function(){
+            console.log("Came Here");
+
+        $('details-form-class').submit();
+        });
+      
+    //- form(action='/admin/items/' + item.id + '/delete' class='details-form-class' style='margin-top: 10px')
+        button.btn.btn-danger(id='submit-btn' type = 'submit') Delete 
+    
+    a.btn.btn-danger(href='/admin/items/' + item.id + '/delete'  style='margin-top: 30px') Delete
+    a.btn.btn-secondary(href='/admin' style='margin-top: 20px') Back
+
+
+
+    
