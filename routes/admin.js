@@ -120,7 +120,8 @@ router.post('/items/:_id/delete', (req,resp) => {
 } );
 
 router.get('/login', (req, resp) => {
-    resp.render('/admin/adminLogin');
+    console.log('Admin');
+    resp.render('adminLogin');
 
 });
     

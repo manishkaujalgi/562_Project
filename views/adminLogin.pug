@@ -1,33 +1,33 @@
 doctype html
 head
-  title Login
+  title Admins Login
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1')
   // ===============================================================================================
-  link(rel='icon' type='image/png' href='images/icons/favicon.ico')
+  link(rel='icon' type='image/png' href='../images/icons/favicon.ico')
   // ===============================================================================================
-  link(rel='stylesheet' type='text/css' href='vendor/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' type='text/css' href='../vendor/bootstrap/css/bootstrap.min.css')
   // ===============================================================================================
-  link(rel='stylesheet' type='text/css' href='fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet' type='text/css' href='../fonts/font-awesome-4.7.0/css/font-awesome.min.css')
   // ===============================================================================================
-  link(rel='stylesheet' type='text/css' href='vendor/animate/animate.css')
+  link(rel='stylesheet' type='text/css' href='../vendor/animate/animate.css')
   // ===============================================================================================
-  link(rel='stylesheet' type='text/css' href='vendor/css-hamburgers/hamburgers.min.css')
+  link(rel='stylesheet' type='text/css' href='../vendor/css-hamburgers/hamburgers.min.css')
   // ===============================================================================================
-  link(rel='stylesheet' type='text/css' href='vendor/select2/select2.min.css')
+  link(rel='stylesheet' type='text/css' href='../vendor/select2/select2.min.css')
   // ===============================================================================================
-  link(rel='stylesheet' type='text/css' href='css/util.css')
-  link(rel='stylesheet' type='text/css' href='css/main.css')
+  link(rel='stylesheet' type='text/css' href='../css/util.css')
+  link(rel='stylesheet' type='text/css' href='../css/main.css')
   // ===============================================================================================
 .limiter
   .container-login100
     .wrap-login100
       .login100-pic.js-tilt(data-tilt='')
-        img(src='images/img-01.png' alt='IMG')
-      form.login100-form.validate-form(action='/login' method='post')
+        img(src='../images/img-01.png' alt='IMG')
+      form.login100-form.validate-form(action='/admin/login' method='post')
         
         span.login100-form-title
-          | Customer Login
+          | Administrator Login
         if validateErr
             each err in displayErr
                 .alert.alert-danger
@@ -45,30 +45,19 @@ head
         .container-login100-form-btn
           button.login100-form-btn
             | Login
-        .text-center.p-t-12
-          span.txt1
-            | Forgot 
-          a.txt2(href='#')
-            |  Username / Password?
-        .text-center.p-t-40
-          a.txt2(href='/admin/login')
-            | Admin login. Click here
-        .text-center.p-t-136
-          a.txt2(href='../register')
-            h2 Just Born --> Register here!!
-            .m-l-5(aria-hidden='true')
+        
 // ===============================================================================================
-script(src='vendor/jquery/jquery-3.2.1.min.js')
+script(src='../vendor/jquery/jquery-3.2.1.min.js')
 // ===============================================================================================
-script(src='vendor/bootstrap/js/popper.js')
-script(src='vendor/bootstrap/js/bootstrap.min.js')
+script(src='../vendor/bootstrap/js/popper.js')
+script(src='../vendor/bootstrap/js/bootstrap.min.js')
 // ===============================================================================================
-script(src='vendor/select2/select2.min.js')
+script(src='../vendor/select2/select2.min.js')
 // ===============================================================================================
-script(src='vendor/tilt/tilt.jquery.min.js')
+script(src='../vendor/tilt/tilt.jquery.min.js')
 script.
   $('.js-tilt').tilt({
   scale: 1.1
   })
 // ===============================================================================================
-script(src='js/main.js')
+script(src='../js/main.js')

@@ -45,6 +45,19 @@ app.use(function(req, res, next){
   next();
 })
 
+app.get('/admin/login', (req, resp) => {
+  console.log('Admin');
+  resp.render('adminLogin');
+});
+
+app.post('/admin/login', passport.authenticate('local.login', {
+  successRedirect: '/admin',
+  failureRedirect: '/admin/login',
+  failureFlash: true 
+}) );
+
+
+
 app.use('/admin', adminRouter);
 app.use('/', indexRouter);
 
