@@ -1,5 +1,4 @@
 extends layout
-
 block content
     if  items
         
@@ -28,8 +27,8 @@ block content
                 a(href='../')
                     button.btn.btn-success(type='button') Continue Shopping
             
-
-                button.btn.btn-primary.pull-right(type='button') Checkout
+                a(href='/checkout')
+                    button.btn.btn-primary.pull-right(type='button') Checkout
 
     else
 

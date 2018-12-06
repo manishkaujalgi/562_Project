@@ -23,6 +23,11 @@ var ItemSchema = new Schema({
     imageUrl:{type:String, required:true}
 });
 
+var otpSchema = new Schema({
+    otp_num:{type:Number, required:true}
+})
+
 module.exports = mongoose.model('Payment', payschema);
 module.exports = mongoose.model('Address',addressSchema);
-module.exports = mongoose.model('Item', ItemSchema);
+module.exports = mongoose.model('itemdetails', ItemSchema);
+module.exports = mongoose.model('otp',otpSchema);

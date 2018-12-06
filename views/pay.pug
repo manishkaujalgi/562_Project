@@ -1,0 +1,146 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='Colorlib Templates')
+  meta(name='author' content='Colorlib')
+  meta(name='keywords' content='Colorlib Templates')
+  // Title Page
+  title Payment Page
+  // Icons font CSS
+  link(href='vendor/mdi-font/css/material-design-iconic-font.min.css' rel='stylesheet' media='all')
+  link(href='vendor/font-awesome-4.7/css/font-awesome.min.css' rel='stylesheet' media='all')
+  // Font special for pages
+  link(href='https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
+  // Vendor CSS
+  link(href='vendor/select2/select2.min.css' rel='stylesheet' media='all')
+  link(href='vendor/datepicker/daterangepicker.css' rel='stylesheet' media='all')
+  // 
+  // Main CSS
+  link(href='/css/main2.css' rel='stylesheet' media='all')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  // Jquery To push data to MongoDB
+  script.
+    var finalprice=0.0
+    var Tax=0.0;
+    var total=0.0;
+    $(document).ready(function(){
+       finalprice = $('#bagMerchandiseTotal_1').text();
+       console.log(finalprice);
+       Tax = $('#bagMerchandiseTotal_3').text();console.log(Tax);
+      total= parseFloat(finalprice)+parseFloat(Tax);
+      console.log("Total"+total);
+      $('#bagMerchandiseTotal_4').text(total);
+    });
+    $('button.orderedPlacebutton').click(function(){
+   
+    $('form.card-details-form-class').submit();
+    });
+.page-wrapper.bg-gra-02.p-t-130.p-b-100.font-poppins
+  .wrapper.wrapper--w680
+    .card.card-4
+      .card-body
+        .container
+          br
+          .checkout-details-info(style='position: relative; top:-100px')
+            .bag-container
+              .Shopping-bag(style='position:relative; top:50px; left:-70px; color: #c00; font-size: 20px; font-weight: bold; font-family: AvenirLTStd35Light,Arial,Helvetica,Verdana,Sans-serif;')
+                h4  Current Shopping Bag Reciept 
+                
+              .total(style='position:relative; top:40px;left:-70px;')
+                .totalStandard(style='display:inline-block; float:left;') SubTotal
+                  #bagMerchandiseTotal_1(style='float:left;position:relative;left:270px;').pull-left #{ finalPrice }
+              br
+              br
+              .total-shipping(style='position:relative; top:40px;left:-70px;')
+                .totalStandard(style='display:inline-block; float:left;')  Shipping 
+                #bagMerchandiseTotal_2(style=' float:right;')  Free 
+              br
+              br
+              .total-tax(style='position:relative; top:40px;left:-70px;')
+                .totalStandard(style='display:inline-block; float:left;')  Tax 
+                #bagMerchandiseTotal_3(style=' float:right;')  4.5
+              br
+              br
+              .total-order(style='border-bottom: 1px solid black; border-bottom-width: thin; position:relative; top:40px;left:-70px;')
+                .totalStandard(style='display:inline-block; float:left;' name=total)  Order Total
+                #bagMerchandiseTotal_4(style=' float:right;')   
+            .keep-shopping(style='position: relative; top:90px; left:50px;')
+              .tax(style='position: relative; top:15px; left:45px;')
+                p(style='color: grey; font-size: 10px;') We offer Standard Tax
+              p(text-align='center')
+                a(href='/index')  Continue Shopping
+              .credit-cards(style='position: relative; top:15px; left:45px;')
+                p(style='color: grey; font-size: 10px;')  we accept a variety of payment options 
+              .credit-cards-img(style='position: relative; top:15px; left:65px;')
+                img(src='/images/creditcard.png' width='150px' height='40px' alt='src not found')
+          .payment
+            div(align='center' style='background-color:#CB4335;height:30px;color:white; top:20px;position: relative;left:-80px;top:20px;')
+              h3(style='top:2px;') Payment Details 
+            br
+            form#card-details-form-id.card-details-form-class(method='POST' action='payment')
+              .paymenttable(style='align:center;width:490px;top:20px;position: relative;')
+                table.paymentform(style='align:center;width:490px;')
+                  tr
+                    td
+                      label Card Holder&apos;s Name
+                    td
+                      input(type='text' name='cardholdersname' placeholder='Eg: John Federick' required='')
+                  tr
+                  tr
+                    td
+                      label CardNumber
+                    td
+                      input(type='text' name='cardNumber' placeholder='Eg: 2345 6789 5678 6754' required='')
+                  tr
+                    td
+                      label Expiry Date
+                    td
+                      select#month(name='month')
+                        option(value='01') 01
+                        option(value='02') 02
+                        option(value='03') 03
+                        option(value='04') 04
+                        option(value='05') 05
+                        option(value='06') 06
+                        option(value='07') 07
+                        option(value='08') 08
+                        option(value='09') 09
+                        option(value='10') 10
+                        option(value='11') 11
+                        option(value='12') 12
+                      select#year(name='year')
+                        option(value='2018') 2018
+                        option(value='2019') 2019
+                        option(value='2020') 2020
+                        option(value='2021') 2021
+                        option(value='2022') 2022
+                        option(value='2023') 2023
+                        option(value='2024') 2024
+                        option(value='2025') 2025
+                        option(value='2026') 2026
+                        option(value='2027') 2027
+                        option(value='2028') 2028
+                        option(value='2029') 2029
+                  tr
+                    td
+                      label CVC
+                    td
+                      input(type='text' name='cvv' placeholder='Eg: 234' required='')
+                  tr
+                    td.full(style='position: relative;top:20px; left:-30px;')
+                      button.btn.btn--radius-2.btn--green.cancelbutton(value='submit' onclick="location.href='/checkout';") Cancel
+                    td.full(style='position: relative;top:20px;left:-10px;')
+                      button.btn.btn--radius-2.btn--blue.orderedPlacebutton(value='submit') PlaceOrder
+          div(style='position: relative; top:58px;font-size:10px;color:grey; left:-30px;')
+            p
+              | Order confirmation Mail will be sent to your registered email id once after placing order
+// Jquery JS
+script(src='vendor/jquery/jquery.min.js')
+// Vendor JS
+script(src='vendor/select2/select2.min.js')
+script(src='vendor/datepicker/moment.min.js')
+script(src='vendor/datepicker/daterangepicker.js')
+// Main JS
+script(src='js/global.js')

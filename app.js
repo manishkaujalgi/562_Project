@@ -13,13 +13,14 @@ var connflash = require('connect-flash');
 var MongoStore = require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
-//var userRoutes = require('./routes/user');
 var adminRouter = require('./routes/admin');
+//var indexrouter = require('./routes/app')
+//var userRoutes = require('./routes/user');
+//var usersRouter = require('./routes/users');
 
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/ecommerce', { useNewUrlParser: true });
-
 require('./config/passport');
 
 // view engine setup
@@ -37,7 +38,8 @@ app.use(session({secret: 'idk', resave: false, saveUninitialized: false, store: 
 app.use(connflash());
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 
 app.use(function(req, res, next){
   res.locals.login = req.isAuthenticated();
@@ -59,9 +61,11 @@ app.post('/admin/login', passport.authenticate('local.login', {
 
 
 app.use('/admin', adminRouter);
+
+//app.use('/user', userRoutes);
 app.use('/', indexRouter);
-
-
+//app.get('/payment',indexrouter);
+//app.post('/payment', indexrouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -78,24 +82,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function() { 
-
-// app.get('/', (req,resp) => {
-    
-//   Book.getBooks(function(err, bookStorage){
-//       if(err){
-//           throw err;
-//       }
-//       //resp.status(200);
-//       resp.render('index', { books: bookStorage})
-//       //resp.json(bookStorage);
-//       console.log(200);
-        
-//   });
-    
-// } );
-
-
-// });
 module.exports = app;

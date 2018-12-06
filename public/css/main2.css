@@ -512,7 +512,7 @@ input {
 }
 
 .rs-select2 .select2-container {
-  width: 100% !important;
+  width: 70% !important;
   outline: none;
   background: #fafafa;
   -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
@@ -634,6 +634,14 @@ input {
   padding: 57px 65px;
   padding-bottom: 65px;
   height:800px;
+  position: relative;
+  left:100px;
+}
+
+.card-5 .card-body {
+  padding: 57px 65px;
+  padding-bottom: 65px;
+  height:340px;
   position: relative;
   left:100px;
 }

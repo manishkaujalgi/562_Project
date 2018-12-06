@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 
 var schema = new Schema({
 
-    imageRoute: {type: String },
-    item_title: {type: String},
-    item_detail: {type: String},
-    item_price: {type: Number}
+    imageRoute: {type: String, required: true},
+    item_title: {type: String, required: true},
+    item_detail: {type: String, required: true},
+    item_price: {type: Number, required: true}
 });
 
 var Item = module.exports = mongoose.model('Item', schema);
